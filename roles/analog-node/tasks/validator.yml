@@ -28,11 +28,11 @@
                         "--base-path=/data",
                         "--rpc-port=9944",
                         "--rpc-external",
-                        "--telemetry-url=wss://telemetry.analog.one/submit 1",
-                        "--listen-addr=/ip4/0.0.0.0/tcp/30303",
+                        "--port=30303",
                         "--public-addr=/ip4/{{ ansible_default_ipv4.address }}/tcp/{{ p2p_listen }}",
                         "--no-private-ip",
-                        "--no-mdns"
+                        "--no-mdns",
+                        "--telemetry-url=wss://telemetry.analog.one/submit 1"
                     ]
                 volumes:
                 - "{{ db_path }}:/data"
