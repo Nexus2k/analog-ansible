@@ -1,0 +1,6 @@
+---
+- name: Setup collator
+  hosts: collator
+  become: yes
+  roles:
+    - analog-node

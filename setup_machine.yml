@@ -1,0 +1,6 @@
+---
+- name: setup
+  hosts: collator
+  become: yes
+  roles:
+  - machine-setup

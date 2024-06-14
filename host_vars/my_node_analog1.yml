@@ -1,0 +1,8 @@
+---
+node_name: 'MyAnalogNode' # Change this!
+chain: analog
+docker_name: my_analog_node
+p2p_listen: 30303
+# Keep these bound to 127.0.0.1 you otherwise expose the ports to the public!
+rpc_listen: 127.0.0.1:9946
+db_path: '~/{{chain}}'

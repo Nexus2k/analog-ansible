@@ -1,0 +1,10 @@
+hosts.ini
+hosts*
+!hosts.ini-sample
+
+.vs/*
+
+host_vars/*
+!host_vars/my_*
+
+backup/*

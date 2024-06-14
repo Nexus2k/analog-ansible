@@ -1,0 +1,50 @@
+---
+- name: Clean running node
+  docker_container:
+    name: '{{ docker_name }}'
+    state: absent
+  ignore_errors: yes
+
+- name: Setup db path
+  file:
+    path: '{{ db_path }}'
+    state: directory
+    owner: 1000
+    group: 1000
+
+- name: Spin up docker
+  docker_compose:
+    project_name: '{{ docker_name }}'
+    pull: yes
+    definition:
+        version: '3'
+        services:
+            analog:
+                image: analoglabs/timechain:latest
+                container_name: '{{ docker_name }}'
+                command:
+                    [
+                        "--name={{ node_name }}",
+                        "--base-path=/data",
+                        "--rpc-port=9944",
+                        "--rpc-external",
+                        "--telemetry-url=wss://telemetry.analog.one/submit 1",
+                        "--public-addr=/ip4/{{ ansible_default_ipv4.address }}/tcp/{{ p2p_listen }}",
+                        "--no-private-ip",
+                        "--no-mdns"
+                    ]
+                volumes:
+                - "{{ db_path }}:/data"
+                ports:
+                - "{{ rpc_listen }}:9944"
+                - "{{ p2p_listen }}:{{ p2p_listen }}"
+                hostname: '{{ docker_name }}'
+                restart: unless-stopped
+  register: output
+
+- ansible.builtin.debug:
+    var: output
+
+- ansible.builtin.assert:
+    that:
+        - "output.services.analog.{{ docker_name }}.state.running"

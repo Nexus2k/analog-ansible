@@ -1,0 +1,6 @@
+---
+- name: Setup watchtower on collator 
+  hosts: collator
+  become: yes
+  roles:
+    - watchtower
