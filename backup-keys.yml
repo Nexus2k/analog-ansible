@@ -3,4 +3,4 @@
   hosts: collator
   become: yes
   roles:
-    - kilt-backup-keys
+    - analog-backup-keys

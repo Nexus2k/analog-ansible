@@ -2,7 +2,7 @@ hosts.ini
 hosts*
 !hosts.ini-sample
 
-.vs/*
+.vscode/*
 
 host_vars/*
 !host_vars/my_*

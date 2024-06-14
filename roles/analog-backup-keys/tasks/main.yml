@@ -6,24 +6,6 @@
   delegate_to: localhost
   become: no
 
-- name: Create relaychain directory
-  ansible.builtin.file:
-    path: backup/{{ inventory_hostname }}/relaychain/
-    state: directory
-  register: local_dir
-  delegate_to: localhost
-  become: no
-
-- name: backup relaychain keys
-  synchronize:  
-    src: '{{ item }}' 
-    dest: backup/{{ inventory_hostname }}/relaychain/ 
-    mode: pull
-    use_ssh_args: yes
-  with_items:
-    - "{{ db_path }}/kusama/chains/ksmcc3/keystore"
-    - "{{ db_path }}/kusama/chains/ksmcc3/network"
-
 - name: Create parachain directory
   ansible.builtin.file:
     path: backup/{{ inventory_hostname }}/parachain/
@@ -39,5 +21,5 @@
     mode: pull
     use_ssh_args: yes
   with_items:
-    - "{{ db_path }}/chains/zeitgeist/keystore"
-    - "{{ db_path }}/chains/zeitgeist/network"
+    - "{{ db_path }}/chains/anlogcc1/keystore"
+    - "{{ db_path }}/chains/anlogcc1/network"

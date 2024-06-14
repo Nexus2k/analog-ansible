@@ -1,5 +1,5 @@
-﻿# kilt-ansible
-Ansible scripts to deploy a kilt collator using docker.
+﻿# analog-ansible
+Ansible scripts to deploy a analog collator using docker.
 
 ## Please Nominate or Tip Me!
 
@@ -13,7 +13,7 @@ Ansible scripts to deploy a kilt collator using docker.
 
 Prerequisits:
 
-*  VPS or dedicated server meeting the Kilt requirements
+*  VPS or dedicated server meeting the analog requirements
 *  ansible (2.11.6+)
 *  ansible-playbook (2.11.6+)
 
@@ -38,19 +38,19 @@ This will execute the following roles:
   *  Setup Docker
   *  Setup Journald
   *  Setup motd (message of the day)
-* kilt-node
-  *  Starts the zeitgeist nodes as docker containers
+* analog-node
+  *  Starts the analog nodes as docker containers
 * watchtower (not run automatically, run using `ansible-playbook -i hosts.ini setup_watchtower.yml`)
   *  Sets up a watchtower container which monitors upstream container image repositories for new releases and upgrades automatically.
 
 You can also run the individual roles using the `setup_*.yml` playbooks instead of `all.yml`.
 
-### Kilt upgrades
+### analog upgrades
 
-To upgrade to the latest Kilt version you can simply restart the containers using the `setup_node.yml` playbook.
+To upgrade to the latest analog version you can simply restart the containers using the `setup_node.yml` playbook.
 
 ## Notes
 
-Monitoring is not yet covered in these ansible playbooks. Do NOT run a Kilt collator w/o proper monitoring.
+Monitoring is not yet covered in these ansible playbooks. Do NOT run a analog collator w/o proper monitoring.
 
 You should not use `root` user on the server, instead replace the `ansible_user` field in `hosts.ini` with an unpriviledged user (which has docker rights).
