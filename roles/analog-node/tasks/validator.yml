@@ -34,7 +34,8 @@
                         "--public-addr=/ip4/{{ ansible_default_ipv4.address }}/tcp/{{ p2p_listen }}",
                         "--no-private-ip",
                         "--no-mdns",
-                        "--telemetry-url=wss://telemetry.analog.one/submit 1"
+                        "--telemetry-url=wss://telemetry.analog.one/submit 1",
+                        "--validator"
                     ]
                 volumes:
                 - "{{ db_path }}:/data"
