@@ -20,7 +20,7 @@
         version: '3'
         services:
             analog:
-                image: analoglabs/timechain:latest
+                image: analoglabs/timenode-test:latest
                 container_name: '{{ docker_name }}'
                 command:
                     [
