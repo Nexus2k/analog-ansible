@@ -35,7 +35,10 @@
                         "--no-private-ip",
                         "--no-mdns",
                         "--telemetry-url=wss://telemetry.analog.one/submit 1",
-                        "--validator"
+                        "--validator",
+                        "--in-peers=40",
+                        "--out-peers=40",
+                        "--reserved-nodes=/ip4/3.238.93.240/tcp/30007/ws/p2p/12D3KooWFecKekruF31owfZaqkMRGHtcsL26jXkHQM3hkfZ43n4d"
                     ]
                 volumes:
                 - "{{ db_path }}:/data"
